@@ -1,0 +1,35 @@
+# Render Blueprint: GitHub reposunu bağla → New → Blueprint → bu dosya otomatik okunur.
+services:
+  - type: web
+    name: jarvis
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/durum
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 22.18.0
+      # Hangi beyinler kullanılsın (anahtarı tanımlı olanlar arasından). Boş bırakırsan hepsi.
+      - key: JARVIS_BEYINLER
+        value: gemini,groq,mistral,openrouter
+      - key: JARVIS_SADECE_UCRETSIZ
+        value: "1"
+      - key: JARVIS_MAKS_BEYIN
+        value: "4"
+      # Herkese açık yayında kotanı korur; Render rastgele bir anahtar üretir (Dashboard > Environment'ta görürsün).
+      - key: JARVIS_ERISIM_ANAHTARI
+        generateValue: true
+      # Anahtarları Render panelinden gir (repoya YAZMA):
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: MISTRAL_API_KEY
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: ELEVEN_API_KEY
+        sync: false

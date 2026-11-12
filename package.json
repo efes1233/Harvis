@@ -1,0 +1,21 @@
+{
+  "name": "jarvis",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "JARVIS - sesli asistan, el hareketi kontrol\u00fc, holografik HUD ve d\u00fcnya sim\u00fclasyonu",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "start": "node --experimental-strip-types --no-warnings server/src/index.ts",
+    "build": "node scripts/build.mjs",
+    "verify": "node scripts/verify.mjs",
+    "test": "node scripts/verify.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
